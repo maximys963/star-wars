@@ -1,0 +1,18 @@
+
+.container {
+    height: 325px;
+    width: 250px;
+    border: 1px solid var(--golden);
+    color: white;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.planet_img{
+    width: 250px;
+    height: 250px;
+}

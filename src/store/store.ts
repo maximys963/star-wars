@@ -1,12 +1,20 @@
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import {
+  applyMiddleware, combineReducers, createStore,
+} from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { mainReducer } from '../reducers/mainReducer';
+import { planets } from '../reducers/planets';
 
 const rootReducer = combineReducers({
-    mainReducer,
+  planets,
 });
 
 const initialState = {};
 
-export const store = createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunk)));
+export const store = createStore(
+  rootReducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(thunk)),
+);
+
+export type RootState = ReturnType<typeof rootReducer>
