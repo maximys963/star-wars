@@ -1,5 +1,5 @@
 import { AppThunk } from '../types/thunkType';
-import { updatePlanetCollection } from '../actions/getPlanetsCollection';
+import { updatePlanetCollection, setPlanetIsLoaded } from '../actions/getPlanetsCollection';
 
 export const thunkGetPlanetCollection = (): AppThunk => async (dispatch) => {
   try {
@@ -7,6 +7,7 @@ export const thunkGetPlanetCollection = (): AppThunk => async (dispatch) => {
     const { results } = await response.json();
 
     dispatch(updatePlanetCollection(results));
+    dispatch(setPlanetIsLoaded(true));
   } catch (err) {
     console.log('err', err);
   }

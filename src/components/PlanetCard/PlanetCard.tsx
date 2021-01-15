@@ -1,23 +1,27 @@
 import React, { FC } from 'react';
+import classnames from 'classnames/bind';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import PlanetImage from '../../assets/images/planet.jpg';
+import { IPlanetCard } from './IPlanetCard';
 import styles from './PlanetCard.module.css';
 
-interface IPlanetCard {
-    name: string,
-    climate: string,
-    population: string
-}
+const cx = classnames.bind(styles);
 
 export const PlanetCard: FC<IPlanetCard> = (props) => {
   const {
     name,
     climate,
     population,
+    containerStyles = '',
   } = props;
 
+  const containerClasses = cx({
+    [containerStyles]: !!containerStyles,
+    container: true,
+  });
+
   return (
-    <div className={styles.container}>
+    <div className={containerClasses}>
       <CardActionArea>
         <img
           className={styles.planet_img}

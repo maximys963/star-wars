@@ -7,9 +7,9 @@ export function updatePlanetCollection(planetsCollection: []): actionDataTypes {
   });
 }
 
-export function setPlanetIsLoaded(): actionDataTypes {
+export function setPlanetIsLoaded(isLoaded: boolean): actionDataTypes {
   return ({
     type: CHANGE_PLANET_LOAD_STATUS,
-    isPlanetsLoaded: true,
+    isPlanetsLoaded: isLoaded,
   });
 }

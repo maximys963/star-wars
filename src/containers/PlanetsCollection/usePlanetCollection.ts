@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useSelector } from '../../selectors/useSelector';
 import { RootState } from '../../store/store';
 import { thunkGetPlanetCollection } from '../../thunks/getPlanetCollection';
 
