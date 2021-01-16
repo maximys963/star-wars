@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { useSelector } from '../../selectors/useSelector';
 import styles from './Header.module.css';
 
-export function Header() {
+export const Header:FC = () => {
+  const pageNumber = useSelector((state) => state.planets.pageNumber);
   return (
     <div className={styles.container}>
-      Pages amount:
-      <div>3</div>
+      <div className={styles.title}>Star Wars planets guide</div>
+      <div className={styles.pageCounter}>
+        Pages amount:
+        {pageNumber}
+      </div>
     </div>
   );
-}
+};

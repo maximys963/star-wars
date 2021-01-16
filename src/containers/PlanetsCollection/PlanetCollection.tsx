@@ -1,5 +1,6 @@
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Button from '@material-ui/core/Button';
 import { usePlanetCollection } from './usePlanetCollection';
 import { PlanetCard } from '../../components/PlanetCard/PlanetCard';
 import styles from './PlanetCollection.module.css';
@@ -8,26 +9,49 @@ export function PlanetCollection() {
   const {
     isPlanetsLoaded,
     planets,
+    loadPlanetCollection,
+    isNewPlanetsLoaded,
   } = usePlanetCollection();
+
   return (
     <div className={styles.container}>
-      {
-            isPlanetsLoaded
-              ? (
-                planets.map((planet) => (
-                  <PlanetCard
-                    containerStyles={styles.cardContainer}
-                    key={planet.name}
-                    name={planet.name}
-                    climate={planet.climate}
-                    population={planet.population}
-                  />
-                ))
-              )
-              : (
-                <CircularProgress color="secondary" />
-              )
+      <div className={styles.collectionContainer}>
+        {
+          isPlanetsLoaded
+            ? (
+              planets.map((planet) => (
+                <PlanetCard
+                  containerStyles={styles.cardContainer}
+                  key={planet.name}
+                  name={planet.name}
+                  climate={planet.climate}
+                  population={planet.population}
+                />
+              ))
+            )
+            : (
+              <CircularProgress color="secondary" />
+            )
         }
+      </div>
+      <div className={styles.button}>
+        <Button
+          onClick={isNewPlanetsLoaded ? loadPlanetCollection : undefined}
+          color="secondary"
+          variant="outlined"
+        >
+          Load more
+          {
+                isNewPlanetsLoaded
+                  ? null
+                  : (
+                    <div className={styles.button_loader}>
+                      <CircularProgress color="secondary" size={20} />
+                    </div>
+                  )
+            }
+        </Button>
+      </div>
     </div>
   );
 }

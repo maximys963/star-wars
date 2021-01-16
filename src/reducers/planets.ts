@@ -1,13 +1,17 @@
 import {
-  UPDATE_PLANETS_COLLECTION,
-  CHANGE_PLANET_LOAD_STATUS,
   actionDataTypes,
-} from '../actionTypes/planetDataTypes';
+  CHANGE_PLANET_LOAD_STATUS,
+  INCREMENT_PAGE_NUMBER,
+  UPDATE_PLANETS_COLLECTION,
+  CHANGE_LOAD_MORE_STATUS,
+} from '../actionTypes/planetTypes';
 import { IPlanetsState } from '../interfaces/root';
 
 const initialState: IPlanetsState = {
   planetsCollection: [],
   isPlanetsLoaded: false,
+  isNewPlanetsLoaded: false,
+  pageNumber: 0,
 };
 
 export const planets = (state = initialState, action: actionDataTypes): IPlanetsState => {
@@ -21,6 +25,16 @@ export const planets = (state = initialState, action: actionDataTypes): IPlanets
       return {
         ...state,
         isPlanetsLoaded: action.isPlanetsLoaded,
+      };
+    case INCREMENT_PAGE_NUMBER:
+      return {
+        ...state,
+        pageNumber: state.pageNumber + 1,
+      };
+    case CHANGE_LOAD_MORE_STATUS:
+      return {
+        ...state,
+        isNewPlanetsLoaded: action.isNewPlanetsLoaded,
       };
     default:
       return state;
