@@ -13,6 +13,7 @@ export const PlanetCard: FC<IPlanetCard> = (props) => {
     climate,
     population,
     containerStyles = '',
+    onClick,
   } = props;
 
   const containerClasses = cx({
@@ -22,7 +23,7 @@ export const PlanetCard: FC<IPlanetCard> = (props) => {
 
   return (
     <div className={containerClasses}>
-      <CardActionArea>
+      <CardActionArea onClick={onClick}>
         <img
           className={styles.planet_img}
           src={PlanetImage}

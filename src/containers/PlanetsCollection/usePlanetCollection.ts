@@ -21,7 +21,7 @@ export function usePlanetCollection() {
     dispatch(getPlanetsCollection(pageNumber));
   }
 
-  const navigateToPlanetDetails = (url: string, pathname: string) => {
+  const navigateToPlanetDetails = (url: string | undefined, pathname: string) => {
     history.push({
       pathname,
       state: {
