@@ -2,7 +2,9 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { Header } from './components/Header/Header';
+import { Alert } from './components/Alert/Alert';
 import { PlanetCollection } from './containers/PlanetsCollection/PlanetCollection';
+import { PlanetDetails } from './containers/PlanetDetails/PlanetDetails';
 import './App.css';
 
 function App() {
@@ -12,8 +14,10 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={PlanetCollection} />
+          <Route exact path="/planet/:name" component={PlanetDetails} />
         </Switch>
       </BrowserRouter>
+      <Alert />
     </div>
   );
 }

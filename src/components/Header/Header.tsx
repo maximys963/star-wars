@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useSelector } from '../../selectors/useSelector';
+import { useSelector } from '../../hooks/useSelector';
 import styles from './Header.module.css';
 
 export const Header:FC = () => {

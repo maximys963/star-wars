@@ -11,6 +11,7 @@ export function PlanetCollection() {
     planets,
     loadPlanetCollection,
     isNewPlanetsLoaded,
+    navigateToPlanetDetails,
   } = usePlanetCollection();
 
   return (
@@ -21,8 +22,9 @@ export function PlanetCollection() {
             ? (
               planets.map((planet) => (
                 <PlanetCard
-                  containerStyles={styles.cardContainer}
+                  onClick={() => navigateToPlanetDetails(planet.url, `/planet/${planet.name}`)}
                   key={planet.name}
+                  containerStyles={styles.cardContainer}
                   name={planet.name}
                   climate={planet.climate}
                   population={planet.population}

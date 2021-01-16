@@ -1,12 +1,17 @@
 import {
-  applyMiddleware, combineReducers, createStore,
+  applyMiddleware,
+  combineReducers,
+  createStore,
 } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { planets } from '../reducers/planets';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+import { planetsReducer } from '../planets/planetsReducer';
+import { alertReducer } from '../alert/alertReducer';
 
 const rootReducer = combineReducers({
-  planets,
+  planets: planetsReducer,
+  alert: alertReducer,
 });
 
 const initialState = {};

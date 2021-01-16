@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import classnames from 'classnames/bind';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import PlanetImage from '../../assets/images/planet.jpg';
-import { IPlanetCard } from './IPlanetCard';
+import { IPlanetCard } from './types';
 import styles from './PlanetCard.module.css';
 
 const cx = classnames.bind(styles);
