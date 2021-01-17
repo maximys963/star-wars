@@ -34,6 +34,7 @@ export const getPlanetsCollection = (pageNumber: number): AppThunk => async (dis
       throw (new Error(error.detail));
     }
   } catch (err) {
+    dispatch(changeLoadMoreStatus(true));
     dispatch(setPlanetsCollectionLoadError(err));
   }
 };
