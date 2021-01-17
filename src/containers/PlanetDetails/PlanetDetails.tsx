@@ -78,7 +78,10 @@ export const PlanetDetails = () => {
                         planet.residents.length === 0
                           ? <div className={styles.no_residents}>No residents in this planet</div>
                           : planet.residents.map((resident) => (
-                            <div className={styles.accordion_item}>
+                            <div
+                                key={resident.name}
+                                className={styles.accordion_item}
+                            >
                               <CustomAccordion title={resident.name}>
                                 {renderAccordionContent(
                                   resident.height,
