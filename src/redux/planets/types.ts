@@ -3,9 +3,10 @@ import { IPlanetCard } from '../../components/PlanetCard/types';
 export interface IPlanetsState {
     planetsCollection: IPlanetCard[],
     isPlanetsLoaded: boolean,
+    isPlanetDetailsLoaded: boolean,
     isNewPlanetsLoaded: boolean,
     pageNumber: number,
-    planetDetails: object
+    planetDetails: IPlanetDetails
 }
 
 export interface IResident {
@@ -32,4 +33,3 @@ export interface IPlanetResponse extends IPlanet {
 export interface IPlanetDetails extends IPlanet {
     residents: Array<IResident>
 }
-

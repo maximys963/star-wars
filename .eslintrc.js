@@ -27,5 +27,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'react/prop-types': 'off',
     camelcase: 'off',
+    'react/self-closing-comp': 'off',
   },
 };

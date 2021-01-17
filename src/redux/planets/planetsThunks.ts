@@ -5,11 +5,12 @@ import {
 } from './types';
 import {
   updatePlanetCollection,
-  changePlanetLoadStatus,
+  changePlanetCollectionLoadStatus,
   incrementPageNumber,
-  setPlanetLoadError,
+  setPlanetsCollectionLoadError,
   changeLoadMoreStatus,
   setPlanetDetails,
+  setPlanetLoadStatus,
 } from './planetsActions';
 import { showAlert } from '../alert/alertActions';
 
@@ -21,7 +22,7 @@ export const getPlanetsCollection = (pageNumber: number): AppThunk => async (dis
       const { results } = await response.json();
       dispatch(updatePlanetCollection(results));
       dispatch(incrementPageNumber());
-      dispatch(changePlanetLoadStatus(true));
+      dispatch(changePlanetCollectionLoadStatus(true));
       dispatch(changeLoadMoreStatus(true));
     } else {
       dispatch(showAlert({
@@ -32,13 +33,14 @@ export const getPlanetsCollection = (pageNumber: number): AppThunk => async (dis
       throw (new Error(error.detail));
     }
   } catch (err) {
-    dispatch(setPlanetLoadError(err));
+    dispatch(setPlanetsCollectionLoadError(err));
     dispatch(changeLoadMoreStatus(true));
   }
 };
 
 export const getPlanetDetails = (url: string): AppThunk => async (dispatch) => {
   try {
+    dispatch(setPlanetLoadStatus(false));
     const planet = await getPlanet(url);
     let residents: Array<IResident> = [];
     if (planet.residents.length !== 0) {
@@ -59,6 +61,7 @@ export const getPlanetDetails = (url: string): AppThunk => async (dispatch) => {
     };
 
     dispatch(setPlanetDetails(planetDetails));
+    dispatch(setPlanetLoadStatus(true));
   } catch (err) {
     console.log('err', err);
   }

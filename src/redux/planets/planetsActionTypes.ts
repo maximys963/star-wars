@@ -1,5 +1,8 @@
+import { IPlanetDetails } from './types';
+
 export const UPDATE_PLANETS_COLLECTION = 'UPDATE_PLANETS_COLLECTION';
 export const LOAD_PLANETS_FAIL = 'LOAD_PLANETS_FAIL';
+export const CHANGE_PLANET_COLLECTION_LOAD_STATUS = 'CHANGE_PLANET_COLLECTION_LOAD_STATUS';
 export const CHANGE_PLANET_LOAD_STATUS = 'CHANGE_PLANET_LOAD_STATUS';
 export const CHANGE_LOAD_MORE_STATUS = 'CHANGE_LOAD_MORE_STATUS';
 export const INCREMENT_PAGE_NUMBER = 'INCREMENT_PAGE_NUMBER';
@@ -11,7 +14,7 @@ interface IGetPlanetCollectionAction {
 }
 
 interface ISetPlanetLoadedAction {
-    type: typeof CHANGE_PLANET_LOAD_STATUS,
+    type: typeof CHANGE_PLANET_COLLECTION_LOAD_STATUS,
     isPlanetsLoaded: boolean
 }
 
@@ -31,7 +34,12 @@ interface ISetPlanetLoadMoreAction {
 
 interface ISetPlantDetails {
     type: typeof SET_PLANET_DETAILS,
-    planetDetails: object
+    planetDetails: IPlanetDetails
+}
+
+interface ISetPlanetLoadStatus {
+    type: typeof CHANGE_PLANET_LOAD_STATUS,
+    isPlanetDetailsLoaded: boolean
 }
 
 export type planetsActionTypes = IGetPlanetCollectionAction
@@ -40,3 +48,4 @@ export type planetsActionTypes = IGetPlanetCollectionAction
                               | IPlantsLoadFailAction
                               | ISetPlanetLoadMoreAction
                               | ISetPlantDetails
+                              | ISetPlanetLoadStatus
