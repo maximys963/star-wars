@@ -28,5 +28,6 @@ module.exports = {
     'react/prop-types': 'off',
     camelcase: 'off',
     'react/self-closing-comp': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };

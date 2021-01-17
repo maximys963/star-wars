@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { useSelector } from '../../hooks/useSelector';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import styles from './Header.module.css';
 
 export const Header:FC = () => {
-  const pageNumber = useSelector((state) => state.planets.pageNumber);
+  const pageNumber = useTypedSelector((state) => state.planets.pageNumber);
   return (
     <div className={styles.container}>
       <div className={styles.title}>Star Wars planets guide</div>

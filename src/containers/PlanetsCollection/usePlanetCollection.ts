@@ -1,17 +1,19 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { useSelector } from '../../hooks/useSelector';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { RootState } from '../../redux/store/store';
 import { getPlanetsCollection } from '../../redux/planets/planetsThunks';
 
 export function usePlanetCollection() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const planets = useSelector((state: RootState) => state.planets.planetsCollection);
-  const pageNumber = useSelector((state: RootState) => state.planets.pageNumber);
-  const isNewPlanetsLoaded = useSelector((state: RootState) => state.planets.isNewPlanetsLoaded);
-  const isPlanetsLoaded = useSelector((state: RootState) => state.planets.isPlanetsLoaded);
+  const planets = useTypedSelector((state: RootState) => state.planets.planetsCollection);
+  const pageNumber = useTypedSelector((state: RootState) => state.planets.pageNumber);
+  const isNewPlanetsLoaded = useTypedSelector(
+    (state: RootState) => state.planets.isNewPlanetsLoaded,
+  );
+  const isPlanetsLoaded = useTypedSelector((state: RootState) => state.planets.isPlanetsLoaded);
 
   useEffect(() => {
     if (planets.length === 0) {
