@@ -7,7 +7,7 @@ import {
   SET_PLANET_DETAILS,
   CHANGE_PLANET_LOAD_STATUS,
   LOAD_PLANETS_FAIL,
-  LOAD_PLANET_DETAILS_FAIL
+  LOAD_PLANET_DETAILS_FAIL,
 } from './planetsActionTypes';
 import { IPlanetsState } from './types';
 
