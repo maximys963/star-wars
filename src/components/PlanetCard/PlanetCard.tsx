@@ -21,6 +21,7 @@ export const PlanetCard: FC<IPlanetCard> = (props) => {
     container: true,
   });
 
+  // @ts-ignore
   return (
     <div className={containerClasses}>
       <CardActionArea
@@ -33,16 +34,18 @@ export const PlanetCard: FC<IPlanetCard> = (props) => {
           alt="planet"
         />
         <div className={styles.card_info_container}>
-          <div className={styles.planet_title}>Name:</div>
-          <div>{name}</div>
-        </div>
-        <div className={styles.card_info_container}>
-          <div className={styles.planet_title}>Climate:</div>
-          <div>{climate}</div>
-        </div>
-        <div className={styles.card_info_container}>
-          <div className={styles.planet_title}>Population:</div>
-          <div>{population}</div>
+          <div className={styles.card_info}>
+            <div className={styles.planet_title}>Name:</div>
+            <div>{name}</div>
+          </div>
+          <div className={styles.card_info}>
+            <div className={styles.planet_title}>Climate:</div>
+            <div>{climate}</div>
+          </div>
+          <div className={styles.card_info}>
+            <div className={styles.planet_title}>Population:</div>
+            <div>{population}</div>
+          </div>
         </div>
       </CardActionArea>
     </div>
