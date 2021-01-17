@@ -23,23 +23,26 @@ export const PlanetCard: FC<IPlanetCard> = (props) => {
 
   return (
     <div className={containerClasses}>
-      <CardActionArea onClick={onClick}>
+      <CardActionArea
+        className={styles.touchArea}
+        onClick={onClick}
+      >
         <img
           className={styles.planet_img}
           src={PlanetImage}
           alt="planet"
         />
-        <div>
-          Name:
-          {name}
+        <div className={styles.card_info_container}>
+          <div className={styles.planet_title}>Name:</div>
+          <div>{name}</div>
         </div>
-        <div>
-          Climate:
-          {climate}
+        <div className={styles.card_info_container}>
+          <div className={styles.planet_title}>Climate:</div>
+          <div>{climate}</div>
         </div>
-        <div>
-          Population:
-          {population}
+        <div className={styles.card_info_container}>
+          <div className={styles.planet_title}>Population:</div>
+          <div>{population}</div>
         </div>
       </CardActionArea>
     </div>

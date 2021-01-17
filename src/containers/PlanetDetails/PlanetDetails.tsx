@@ -49,6 +49,10 @@ export const PlanetDetails = () => {
                         <div>{planet.rotation_period}</div>
                       </div>
                       <div className={styles.detail_item}>
+                        <div className={styles.info_title}>Diameter:</div>
+                        <div>{planet.diameter}</div>
+                      </div>
+                      <div className={styles.detail_item}>
                         <div className={styles.info_title}>Climate:</div>
                         <div>{planet.climate}</div>
                       </div>
@@ -72,7 +76,7 @@ export const PlanetDetails = () => {
                     <div className={styles.accordion_container}>
                       {
                         planet.residents.length === 0
-                          ? <div>No residents in this planet</div>
+                          ? <div className={styles.no_residents}>No residents in this planet</div>
                           : planet.residents.map((resident) => (
                             <div className={styles.accordion_item}>
                               <CustomAccordion title={resident.name}>

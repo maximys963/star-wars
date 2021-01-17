@@ -5,6 +5,8 @@ export interface IPlanetsState {
     isPlanetsLoaded: boolean,
     isPlanetDetailsLoaded: boolean,
     isNewPlanetsLoaded: boolean,
+    planetsLoadError: object,
+    planetDetailsError: object,
     pageNumber: number,
     planetDetails: IPlanetDetails
 }

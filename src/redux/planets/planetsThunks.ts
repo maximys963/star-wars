@@ -11,6 +11,7 @@ import {
   changeLoadMoreStatus,
   setPlanetDetails,
   setPlanetLoadStatus,
+  setPlanetsDetailsLoadError,
 } from './planetsActions';
 import { showAlert } from '../alert/alertActions';
 
@@ -34,7 +35,6 @@ export const getPlanetsCollection = (pageNumber: number): AppThunk => async (dis
     }
   } catch (err) {
     dispatch(setPlanetsCollectionLoadError(err));
-    dispatch(changeLoadMoreStatus(true));
   }
 };
 
@@ -63,7 +63,7 @@ export const getPlanetDetails = (url: string): AppThunk => async (dispatch) => {
     dispatch(setPlanetDetails(planetDetails));
     dispatch(setPlanetLoadStatus(true));
   } catch (err) {
-    console.log('err', err);
+    dispatch(setPlanetsDetailsLoadError(err));
   }
 };
 

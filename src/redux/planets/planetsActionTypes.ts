@@ -2,6 +2,7 @@ import { IPlanetDetails } from './types';
 
 export const UPDATE_PLANETS_COLLECTION = 'UPDATE_PLANETS_COLLECTION';
 export const LOAD_PLANETS_FAIL = 'LOAD_PLANETS_FAIL';
+export const LOAD_PLANET_DETAILS_FAIL = 'LOAD_PLANET_DETAILS_FAIL';
 export const CHANGE_PLANET_COLLECTION_LOAD_STATUS = 'CHANGE_PLANET_COLLECTION_LOAD_STATUS';
 export const CHANGE_PLANET_LOAD_STATUS = 'CHANGE_PLANET_LOAD_STATUS';
 export const CHANGE_LOAD_MORE_STATUS = 'CHANGE_LOAD_MORE_STATUS';
@@ -24,7 +25,12 @@ interface IIncrementPageAction {
 
 interface IPlantsLoadFailAction {
     type: typeof LOAD_PLANETS_FAIL,
-    loadError: object
+    planetsLoadError: object
+}
+
+interface IPlanetDetailsFailAction {
+    type: typeof LOAD_PLANET_DETAILS_FAIL,
+    planetDetailsError: object
 }
 
 interface ISetPlanetLoadMoreAction {
@@ -49,3 +55,4 @@ export type planetsActionTypes = IGetPlanetCollectionAction
                               | ISetPlanetLoadMoreAction
                               | ISetPlantDetails
                               | ISetPlanetLoadStatus
+                              | IPlanetDetailsFailAction

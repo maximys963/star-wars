@@ -6,6 +6,8 @@ import {
   CHANGE_LOAD_MORE_STATUS,
   SET_PLANET_DETAILS,
   CHANGE_PLANET_LOAD_STATUS,
+  LOAD_PLANETS_FAIL,
+  LOAD_PLANET_DETAILS_FAIL
 } from './planetsActionTypes';
 import { IPlanetsState } from './types';
 
@@ -14,6 +16,8 @@ const initialState: IPlanetsState = {
   isPlanetsLoaded: false,
   isNewPlanetsLoaded: false,
   isPlanetDetailsLoaded: false,
+  planetsLoadError: {},
+  planetDetailsError: {},
   pageNumber: 0,
   planetDetails: {
     name: '',
@@ -63,6 +67,16 @@ export const planetsReducer = (state = initialState, action: planetsActionTypes)
       return {
         ...state,
         isPlanetDetailsLoaded: action.isPlanetDetailsLoaded,
+      };
+    case LOAD_PLANETS_FAIL:
+      return {
+        ...state,
+        planetsLoadError: action.planetsLoadError,
+      };
+    case LOAD_PLANET_DETAILS_FAIL:
+      return {
+        ...state,
+        planetDetailsError: action.planetDetailsError,
       };
     default:
       return state;

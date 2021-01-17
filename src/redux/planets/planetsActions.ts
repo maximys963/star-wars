@@ -8,6 +8,7 @@ import {
   CHANGE_LOAD_MORE_STATUS,
   SET_PLANET_DETAILS,
   CHANGE_PLANET_LOAD_STATUS,
+  LOAD_PLANET_DETAILS_FAIL,
 } from './planetsActionTypes';
 
 export function updatePlanetCollection(planetsCollection: []): planetsActionTypes {
@@ -30,10 +31,10 @@ export function incrementPageNumber() :planetsActionTypes {
   });
 }
 
-export function setPlanetsCollectionLoadError(error: object) :planetsActionTypes {
+export function setPlanetsCollectionLoadError(planetsLoadError: object) :planetsActionTypes {
   return ({
     type: LOAD_PLANETS_FAIL,
-    loadError: error,
+    planetsLoadError,
   });
 }
 
@@ -55,5 +56,12 @@ export function setPlanetLoadStatus(isPlanetDetailsLoaded: boolean) {
   return ({
     type: CHANGE_PLANET_LOAD_STATUS,
     isPlanetDetailsLoaded,
+  });
+}
+
+export function setPlanetsDetailsLoadError(planetDetailsError: object) {
+  return ({
+    type: LOAD_PLANET_DETAILS_FAIL,
+    planetDetailsError,
   });
 }
