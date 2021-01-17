@@ -1,3 +1,4 @@
+import { IPlanetDetails } from './types';
 import {
   planetsActionTypes,
   CHANGE_PLANET_LOAD_STATUS,
@@ -42,7 +43,7 @@ export function changeLoadMoreStatus(isNewPlanetsLoaded: boolean) {
   });
 }
 
-export function setPlanetDetails(planetDetails: object) {
+export function setPlanetDetails(planetDetails: IPlanetDetails) {
   return ({
     type: SET_PLANET_DETAILS,
     planetDetails,

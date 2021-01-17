@@ -14,7 +14,9 @@ export function usePlanetCollection() {
   const isPlanetsLoaded = useSelector((state: RootState) => state.planets.isPlanetsLoaded);
 
   useEffect(() => {
-    dispatch(getPlanetsCollection(pageNumber));
+    if (planets.length === 0) {
+      dispatch(getPlanetsCollection(pageNumber));
+    }
   }, []);
 
   function loadPlanetCollection() {

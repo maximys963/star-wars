@@ -1,5 +1,9 @@
 import { AppThunk } from '../../types/thunkType';
 import {
+  IResident,
+  IPlanetResponse,
+} from './types';
+import {
   updatePlanetCollection,
   changePlanetLoadStatus,
   incrementPageNumber,
@@ -35,11 +39,41 @@ export const getPlanetsCollection = (pageNumber: number): AppThunk => async (dis
 
 export const getPlanetDetails = (url: string): AppThunk => async (dispatch) => {
   try {
-    const response = await fetch(url);
-    const planetDetails = await response.json();
-    console.log('planetDetails', planetDetails);
+    const planet = await getPlanet(url);
+    let residents: Array<IResident> = [];
+    if (planet.residents.length !== 0) {
+      residents = await Promise.all(
+        planet.residents.map((residentUrl: string) => getResidentsOfPlanet(residentUrl)),
+      );
+    }
+
+    const planetDetails = {
+      name: planet.name,
+      rotation_period: planet.rotation_period,
+      diameter: planet.diameter,
+      climate: planet.climate,
+      gravity: planet.gravity,
+      terrain: planet.terrain,
+      population: planet.population,
+      residents,
+    };
+
     dispatch(setPlanetDetails(planetDetails));
   } catch (err) {
     console.log('err', err);
   }
+};
+
+const getPlanet = async (url: string): Promise<IPlanetResponse> => {
+  const planetResponse = await fetch(url);
+  const planet = await planetResponse.json();
+
+  return planet;
+};
+
+const getResidentsOfPlanet = async (residentsUrl: string): Promise<IResident> => {
+  const response = await fetch(residentsUrl);
+  const resident = await response.json();
+
+  return resident;
 };
