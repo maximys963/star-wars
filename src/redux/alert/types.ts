@@ -6,4 +6,3 @@ export interface IShowAlert {
 export interface IAlertState extends IShowAlert{
     isOpen: boolean,
 }
-

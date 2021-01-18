@@ -4,7 +4,7 @@ import { IAlertState } from './types';
 const initialState: IAlertState = {
   isOpen: false,
   message: '',
-  severity: 'info',
+  severity: 'warning',
 };
 
 export const alertReducer = (state = initialState, action: alertActionTypes): IAlertState => {
@@ -21,7 +21,7 @@ export const alertReducer = (state = initialState, action: alertActionTypes): IA
         ...state,
         isOpen: false,
         message: '',
-        severity: 'info',
+        severity: 'warning',
       };
     default: return state;
   }

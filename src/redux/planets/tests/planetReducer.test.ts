@@ -1,66 +1,53 @@
-import { planetsReducer as reducer } from "../planetsReducer";
-import { IPlanetsState } from '../types';
+import {initialState, planetsReducer as reducer} from "../planetsReducer";
+import {mocks} from "./mocks/mocks";
 import {
     planetsActionTypes,
-    CHANGE_PLANET_COLLECTION_LOAD_STATUS,
-    INCREMENT_PAGE_NUMBER,
-    UPDATE_PLANETS_COLLECTION,
-    CHANGE_LOAD_MORE_STATUS,
-    SET_PLANET_DETAILS,
-    CHANGE_PLANET_LOAD_STATUS,
-    LOAD_PLANETS_FAIL,
-    LOAD_PLANET_DETAILS_FAIL,
+    planetsActionsConstants,
 } from '../planetsActionTypes';
 
-
-const initialState: IPlanetsState = {
-    planetsCollection: [],
-    isPlanetsLoaded: false,
-    isNewPlanetsLoaded: false,
-    isPlanetDetailsLoaded: false,
-    planetsLoadError: {},
-    planetDetailsError: {},
-    pageNumber: 0,
-    planetDetails: {
-        name: '',
-        rotation_period: '',
-        diameter: '',
-        climate: '',
-        gravity: '',
-        terrain: '',
-        population: '',
-        residents: [{
-            name: '',
-            height: '',
-            mass: '',
-            gender: '',
-        }],
-    },
-};
-
-const mockPlanetDetails = {
-        name: 'test',
-        rotation_period: 'test',
-        diameter: 'test',
-        climate: 'test',
-        gravity: 'test',
-        terrain: 'test',
-        population: 'test',
-        residents: [{
-            name: 'test',
-            height: 'test',
-            mass: 'test',
-            gender: 'test',
-        }],
-    };
-
-
 describe('planetsReducer', () => {
-    it('should handle SET_PLANET_DETAILS', () => {
+    it('should handle GET_PLANET_DETAILS_SUCCESS', () => {
         const planetDetailsAction: planetsActionTypes = {
-            type: SET_PLANET_DETAILS,
-            planetDetails: mockPlanetDetails
+            type: planetsActionsConstants.GET_PLANET_DETAILS_SUCCESS,
+            planetDetails: mocks.planetDetailsMock
         }
-        expect(reducer(initialState, planetDetailsAction)).toEqual({...initialState, planetDetails: mockPlanetDetails});
-    })
+        const updateState = reducer(initialState, planetDetailsAction)
+        expect(updateState).toEqual({...initialState, planetDetails: mocks.planetDetailsMock});
+    });
+
+    it('should handle GET_PLANETS_COLLECTION_SUCCESS', () => {
+        const planetsCollectionAction: planetsActionTypes = {
+            type: planetsActionsConstants.GET_PLANETS_COLLECTION_SUCCESS,
+            planetsCollection: mocks.planetCollectionMock
+        }
+        const updateState = reducer(initialState, planetsCollectionAction)
+        expect(updateState).toEqual({...initialState, planetsCollection: mocks.planetCollectionMock});
+    });
+
+    it('should handle INCREMENT_PAGE_NUMBER', () => {
+        const planetsCollectionAction: planetsActionTypes = {
+            type: planetsActionsConstants.INCREMENT_PAGE_NUMBER,
+        }
+        const updateState = reducer(initialState, planetsCollectionAction)
+        expect(updateState.pageNumber).toBe(1);
+    });
+
+    it('should handle CHANGE_PLANET_COLLECTION_LOAD_STATUS true', () => {
+        const planetsCollectionAction: planetsActionTypes = {
+            type: planetsActionsConstants.CHANGE_PLANET_COLLECTION_LOAD_STATUS,
+            isPlanetsLoaded: true
+        }
+        const updateState = reducer(initialState, planetsCollectionAction)
+        expect(updateState.isPlanetsLoaded).toBeTruthy();
+    });
+
+    it('should handle CHANGE_PLANET_COLLECTION_LOAD_STATUS false', () => {
+        const planetsCollectionAction: planetsActionTypes = {
+            type: planetsActionsConstants.CHANGE_PLANET_COLLECTION_LOAD_STATUS,
+            isPlanetsLoaded: false
+        }
+        const updateState = reducer(initialState, planetsCollectionAction)
+        expect(updateState.isPlanetsLoaded).toBeFalsy();
+    });
+
 })

@@ -1,12 +1,18 @@
-import { IPlanetCard } from '../../components/PlanetCard/types';
+export interface IPlanetCollectionItem {
+    name: string,
+    climate: string,
+    population: string
+    url: string,
+    residents: string[]
+}
 
 export interface IPlanetsState {
-    planetsCollection: IPlanetCard[],
+    planetsCollection: IPlanetCollectionItem[],
     isPlanetsLoaded: boolean,
     isPlanetDetailsLoaded: boolean,
     isNewPlanetsLoaded: boolean,
-    planetsLoadError: object,
-    planetDetailsError: object,
+    planetsLoadError: string,
+    planetDetailsError: string,
     pageNumber: number,
     planetDetails: IPlanetDetails
 }
