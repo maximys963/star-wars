@@ -105,9 +105,3 @@ export const PlanetDetails = () => {
     </div>
   );
 };
-
-// TODO redux store test reducer
-// TODO test thunks
-// TODO ui test
-// TODO test api
-// TODO test hooks

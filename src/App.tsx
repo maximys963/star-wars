@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-use-before-define
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { Header } from './components/Header/Header';

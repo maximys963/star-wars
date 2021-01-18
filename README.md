@@ -4,6 +4,6 @@ Run project: `yarn start`
 
 Run tests: `yarn test`
 
-Demo: 
+Demo: http://star-wars-genesis.herokuapp.com/
 
 
