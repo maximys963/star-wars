@@ -1,67 +1,60 @@
-import { IPlanetDetails } from './types';
+import { IPlanetDetails, IPlanetCollectionItem } from './types';
 import {
   planetsActionTypes,
-  CHANGE_PLANET_COLLECTION_LOAD_STATUS,
-  INCREMENT_PAGE_NUMBER,
-  LOAD_PLANETS_FAIL,
-  UPDATE_PLANETS_COLLECTION,
-  CHANGE_LOAD_MORE_STATUS,
-  SET_PLANET_DETAILS,
-  CHANGE_PLANET_LOAD_STATUS,
-  LOAD_PLANET_DETAILS_FAIL,
+  planetsActionsConstants,
 } from './planetsActionTypes';
 
-export function updatePlanetCollection(planetsCollection: []): planetsActionTypes {
+export function updatePlanetCollection(planetsCollection: IPlanetCollectionItem[]): planetsActionTypes {
   return ({
-    type: UPDATE_PLANETS_COLLECTION,
+    type: planetsActionsConstants.GET_PLANETS_COLLECTION_SUCCESS,
     planetsCollection,
   });
 }
 
 export function changePlanetCollectionLoadStatus(isPlanetsLoaded: boolean): planetsActionTypes {
   return ({
-    type: CHANGE_PLANET_COLLECTION_LOAD_STATUS,
+    type: planetsActionsConstants.CHANGE_PLANET_COLLECTION_LOAD_STATUS,
     isPlanetsLoaded,
   });
 }
 
 export function incrementPageNumber() :planetsActionTypes {
   return ({
-    type: INCREMENT_PAGE_NUMBER,
+    type: planetsActionsConstants.INCREMENT_PAGE_NUMBER,
   });
 }
 
-export function setPlanetsCollectionLoadError(planetsLoadError: object) :planetsActionTypes {
+export function setPlanetsCollectionLoadError(planetsLoadError: string) :planetsActionTypes {
   return ({
-    type: LOAD_PLANETS_FAIL,
+    type: planetsActionsConstants.GET_PLANETS_COLLECTION_FAIL,
     planetsLoadError,
   });
 }
 
 export function changeLoadMoreStatus(isNewPlanetsLoaded: boolean) {
   return ({
-    type: CHANGE_LOAD_MORE_STATUS,
+    type: planetsActionsConstants.CHANGE_LOAD_MORE_STATUS,
     isNewPlanetsLoaded,
   });
 }
 
 export function setPlanetDetails(planetDetails: IPlanetDetails) {
   return ({
-    type: SET_PLANET_DETAILS,
+    type: planetsActionsConstants.GET_PLANET_DETAILS_SUCCESS,
     planetDetails,
   });
 }
 
 export function setPlanetLoadStatus(isPlanetDetailsLoaded: boolean) {
   return ({
-    type: CHANGE_PLANET_LOAD_STATUS,
+    type: planetsActionsConstants.CHANGE_PLANET_LOAD_STATUS,
     isPlanetDetailsLoaded,
   });
 }
 
-export function setPlanetsDetailsLoadError(planetDetailsError: object) {
+export function setPlanetsDetailsLoadError(planetDetailsError: string) {
   return ({
-    type: LOAD_PLANET_DETAILS_FAIL,
+    type: planetsActionsConstants.GET_PLANET_DETAILS_FAIL,
     planetDetailsError,
   });
 }
