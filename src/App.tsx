@@ -17,7 +17,7 @@ function App() {
           <Route exact path="/planet/:name" component={PlanetDetails} />
         </Switch>
       </BrowserRouter>
-      <Alert />
+      <Alert autoHideDuration={2000} />
     </div>
   );
 }

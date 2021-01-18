@@ -43,16 +43,12 @@ export const getPlanetDetails = (url: string): AppThunk => async (dispatch) => {
   try {
     dispatch(setPlanetLoadStatus(false));
     const planet = await getPlanet(url);
-    console.log('planet', planet);
     let residents: Array<IResident> = [];
-    console.log('planet.residents', planet.residents);
     if (planet.residents.length !== 0) {
       residents = await Promise.all(
         planet.residents.map((residentUrl: string) => getResidentsOfPlanet(residentUrl)),
       );
     }
-
-    console.log('residents', residents);
 
     const planetDetails = {
       name: planet.name,
@@ -64,8 +60,6 @@ export const getPlanetDetails = (url: string): AppThunk => async (dispatch) => {
       population: planet.population,
       residents,
     };
-
-    console.log('planetDetails', planetDetails);
 
     dispatch(setPlanetDetails(planetDetails));
     dispatch(setPlanetLoadStatus(true));
