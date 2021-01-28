@@ -6,7 +6,7 @@ import {
     getPlanetDetails,
 } from "../planetsThunks";
 import thunk from 'redux-thunk';
-import { mocks } from "./mocks/mocks";
+import { mocks } from "../../../utils/mocks/mocks";
 import { planetsActionsConstants } from "../planetsActionTypes";
 import {SHOW_ALERT} from "../../alert/alertActionTypes";
 
@@ -19,10 +19,20 @@ describe('planet thunks', () => {
     })
 
     it('getPlanetsCollection creates GET_PLANETS_COLLECTION_SUCCESS when fetching planet collection has been done', () => {
-        fetchMock.getOnce('http://swapi.dev/api/planets/?page=1', {
-            body: { results: mocks.planetCollectionMock },
-            headers: { 'content-type': 'application/json' },
-            status: 200
+        // fetchMock.getOnce('http://swapi.dev/api/planets/?page=1', {
+        //     body: { results: mocks.planetCollectionMock },
+        //     headers: { 'content-type': 'application/json' },
+        //     status: 200
+        // })
+
+        jest.spyOn(window, 'fetch').mockImplementation(() => {
+            return Promise.resolve({
+                ok: true,
+                status: 200,
+                json: () => Promise.resolve({
+                   results: mocks.planetCollectionMock,
+                })
+            } as Response)
         })
 
 

@@ -4,7 +4,7 @@ import {
     incrementPageNumber,
     setPlanetDetails,
 } from "../planetsActions";
-import { mocks } from "./mocks/mocks";
+import { mocks } from "../../../utils/mocks/mocks";
 import { planetsActionsConstants } from '../planetsActionTypes';
 
 describe('planetActions', () => {

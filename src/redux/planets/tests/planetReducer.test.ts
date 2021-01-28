@@ -1,5 +1,5 @@
 import {initialState, planetsReducer as reducer} from "../planetsReducer";
-import {mocks} from "./mocks/mocks";
+import {mocks} from "../../../utils/mocks/mocks";
 import {
     planetsActionTypes,
     planetsActionsConstants,
